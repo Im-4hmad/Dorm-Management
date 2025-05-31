@@ -1,0 +1,4 @@
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.GeneratedMSBuildEditorConfig.editorconfig
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.AssemblyInfoInputs.cache
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.AssemblyInfo.cs
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.csproj.CoreCompileInputs.cache
