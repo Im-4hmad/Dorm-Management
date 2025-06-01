@@ -19,7 +19,7 @@ namespace DormManagement
     { 
         public static void test()
              {
-          
+          //createran
 
         }
         public static void error()
@@ -61,7 +61,16 @@ namespace DormManagement
                     }
                     else if (choice == 2)
                     {
-
+                        //Console.WriteLine("1-Add Block");
+                        //Console.WriteLine("2-Delete Block");
+                        //Console.WriteLine("3-Edit Block");
+                        //Console.WriteLine("4-show Block");
+                        //choice = int.Parse(Console.ReadLine().Trim());
+                        //if (choice == 1) m.addBlock();
+                        //else if (choice == 2) m.deleteBlock();
+                        //else if (choice == 3) m.updateBlock();
+                        //else if (choice == 4) m.showBlocks();
+                        //else error();
                     }
                     else if (choice == 3)
                     {

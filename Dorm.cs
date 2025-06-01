@@ -11,14 +11,20 @@ using System.Threading.Tasks;
 //{
     class Dorm
     {
-        private string name, address;
+    private int id;
+    private string name, address;
         private int capacity;
         private Person manager;
-        private List <Block> blocks;
+        private List <Block> blocks=new List<Block>();
     public string Name { get; set; }
 
-    public Dorm(string name,string address,int capacity)
+    public int Id
     {
+        get { return id; }
+    }
+    public Dorm(string name,string address,int capacity,int id)
+    {
+        this.id = id; 
         this.name = name;
         this.address = address;
         this.capacity = capacity;
@@ -30,6 +36,8 @@ using System.Threading.Tasks;
     }
     public void Show()
     {
+        Console.WriteLine("Id of dorm : " + id);
+
         Console.WriteLine("name of dorm : " + name);
         Console.WriteLine("address of dorm : " + address);
         Console.WriteLine("capacity of dorm : " + capacity);
@@ -70,6 +78,62 @@ using System.Threading.Tasks;
         }
         Console.WriteLine("updated successfully");
         this.Show();
+    }
+    public void showBlocks()
+    {
+        if (blocks.Count == 0)
+        {
+            Console.WriteLine("no blocks :(");
+            return;
+        }
+        foreach (Block block in blocks) block.Show();
+    }
+    public void manageBlocks()
+    {
+        Console.WriteLine("managing blocks");
+        Console.WriteLine("1-Add Block");
+        Console.WriteLine("2-Delete Block");
+        Console.WriteLine("3-Edit Block");
+        Console.WriteLine("4-show Block");
+        int choice =int.Parse(Console.ReadLine().Trim());
+        if (choice == 4)
+        {
+            showBlocks();
+        }
+        else if (choice == 1)
+        {
+            int id = 1;
+            foreach (Block block in blocks)
+                id += block.Id;
+            string name;
+            int floor;
+            Console.Write("Enter Block name ; ");
+            name = Console.ReadLine();
+            Console.Write("Enter Block floor count ; ");
+
+            floor = int.Parse(Console.ReadLine());
+            blocks.Add(new Block(name, floor, id));
+        }
+        else if (choice == 2)
+        {
+            showBlocks();
+            Console.Write("Enter Block id you wanna delete ; ");
+            int id = int.Parse(Console.ReadLine().Trim());
+            foreach (Block block in blocks)
+                if (block.Id == id)
+                {
+                    blocks.Remove(block);
+                    Console.WriteLine("block deleted");
+                    return;
+                }
+            Console.WriteLine("404 block not found :)");
+        }
+        else if (choice == 3)
+        {
+
+            // update stuff
+        }
+        else Console.WriteLine("invalid input");
     }
 }
 //}

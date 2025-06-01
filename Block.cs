@@ -4,12 +4,25 @@
 //{
     class Block
     {
-        public string Name;
-        public string The_Corresponding_Dormitory;
+    private int id;    
+    public string Name;
+        //public string The_Corresponding_Dormitory;
         public int Floors;
         public int NumRooms;
         public List<Room> rooms = new List<Room>();
 
+
+        public Block(string name,int floors,int id)
+    {
+        this.Name = name;
+        //this.The_Corresponding_Dormitory = the_corresponding_Dormitory;
+        this.Floors = floors;
+        this.id = id;   
+    }   
+    public int Id
+    {
+        get { return id; }  
+    }
         public void AddRoom(Room room)
         {
             rooms.Add(room);
@@ -54,17 +67,27 @@
         //    }
         //    return emptyRooms;
         //}
+    //    public void Show()
+    //    {
+    //    Console.WriteLine("name of Block : " + Name);
+    //    Console.WriteLine(" The Corresponding Dormitory : " + The_Corresponding_Dormitory);
+    //    Console.WriteLine("number of floors : " + Floors);
+    //    Console.WriteLine("manager of dorm : " + " *** TODO ++++ ");
+
+    //    Console.WriteLine("<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>");
+    //}
         public void Show()
         {
+        Console.WriteLine($"Block Id : {id}");
 
-        }
-        public void DisplayInfo()
-        {
-            Console.WriteLine($"Block name : {Name}");
-            Console.WriteLine($"The corresponding dormitory : {The_Corresponding_Dormitory}");
+        Console.WriteLine($"Block name : {Name}");
+            //Console.WriteLine($"The corresponding dormitory : {The_Corresponding_Dormitory}");
             Console.WriteLine($"Number of floors : {Floors}");
-            Console.WriteLine($"Number of Rooms : {NumRooms}");
-        }
+        Console.WriteLine($"Number of roomes : {rooms.Count}");
+        Console.WriteLine("<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>");
+
+        //Console.WriteLine($"Number of Rooms : {NumRooms}");
     }
+}
 
 //}

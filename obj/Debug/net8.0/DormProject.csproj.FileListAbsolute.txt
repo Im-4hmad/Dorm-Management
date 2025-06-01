@@ -12,3 +12,4 @@ E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\refint\DormProject.dll
 E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.pdb
 E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.genruntimeconfig.cache
 E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\ref\DormProject.dll
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.sourcelink.json
