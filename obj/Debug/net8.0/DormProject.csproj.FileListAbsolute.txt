@@ -2,3 +2,13 @@ E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.GeneratedMSBuildEditorCo
 E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.AssemblyInfoInputs.cache
 E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.AssemblyInfo.cs
 E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.csproj.CoreCompileInputs.cache
+E:\Codes\Uni Projects\Dorm\bin\Debug\net8.0\DormProject.exe
+E:\Codes\Uni Projects\Dorm\bin\Debug\net8.0\DormProject.deps.json
+E:\Codes\Uni Projects\Dorm\bin\Debug\net8.0\DormProject.runtimeconfig.json
+E:\Codes\Uni Projects\Dorm\bin\Debug\net8.0\DormProject.dll
+E:\Codes\Uni Projects\Dorm\bin\Debug\net8.0\DormProject.pdb
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.dll
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\refint\DormProject.dll
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.pdb
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\DormProject.genruntimeconfig.cache
+E:\Codes\Uni Projects\Dorm\obj\Debug\net8.0\ref\DormProject.dll

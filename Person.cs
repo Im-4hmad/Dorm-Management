@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project
-{
+//namespace Person
+//{
     public enum Role
     {
-        dormMa, 
+        dormMa,
         blockMa,
         student
     }
@@ -32,7 +32,7 @@ namespace Project
         //تجهیزات اختصاص داده شده
         public Equipment equipment { get; set; }
         //کانستراکتور برای مسئول خوابگاه
-        public Person(string Name,  string ID, string Pnumber, string Address, Dorm dorm)
+        public Person(string Name, string ID, string Pnumber, string Address, Dorm dorm)
         {
             name = Name;
             id = ID;
@@ -49,10 +49,10 @@ namespace Project
         //فرض رو بر این گذاشتم که ما برای نمایش لیست مسئولان خوابگاه لیستی که اونا توش ذخیره شدن رو به این متد پاس میدیم و اینجا فقط اسم و خوابگاه تحت مسئولیت نمایش داده میشه
         public static void ShowDorMa(List<Person> list)
         {
-            foreach(Person person in list)
+            foreach (Person person in list)
             {
-                Console.WriteLine(person.name);
-                person.resDorm.Show();
+                if (person.duty == Role.dormMa)
+                    person.Show();
                 Console.WriteLine();
             }
         }
@@ -86,7 +86,7 @@ namespace Project
             {
                 Console.Write(person.name);
                 person.resBlock.Show();
-                Console.WriteLine() ;
+                Console.WriteLine();
             }
         }
         //این متد، هم برای ثبت نام دانشجو هم جا به جایی دانشجو
@@ -102,61 +102,61 @@ namespace Project
         public void Show()
         {
 
-            if(resBlock == null)
+            if (resBlock == null)
             {
                 Console.WriteLine("Student still doesn't have Block,Dorm and Room");
             }
             else
             {
                 //نمایش هم اتاق هم بیوک
-                residingBlock.Show();
+                //residingBlock.Show();
                 //نمایش اطلاعات خوابگاه
-                residingDorm.Show();
+                //residingDorm.Show();
             }
-            if(equipment == null)
+            if (equipment == null)
             {
                 Console.WriteLine("Student still doesn't have any equipment");
             }
             else
             {
                 //نمایش تجهیزات اختصاص داده شده
-                equipment.Show();
+                //equipment.Show();
             }
         }
         //برای تغییر مشخصات دانشجو،مسئول بلوک و مسئول خوابگاه
-         // فرض رو بر این میزارم داخل برنامه اول از کاربر میپرسه چی رو میخواد تغییر بده از این دانشجو و بعد همون ورودی اش پاس داده میشه به این تابع
+        // فرض رو بر این میزارم داخل برنامه اول از کاربر میپرسه چی رو میخواد تغییر بده از این دانشجو و بعد همون ورودی اش پاس داده میشه به این تابع
         public void Edit(string info)
         {
-            if(info == null)
+            if (info == null)
             {
                 Console.WriteLine("error: empty input");
                 return;
             }
-            if(info == "name")
+            if (info == "name")
             {
                 string newName = Console.ReadLine();
                 name = newName;
                 Console.WriteLine("successful");
             }
-            else if(info == "ID")
+            else if (info == "ID")
             {
                 string newID = Console.ReadLine();
                 id = newID;
                 Console.WriteLine("successful");
             }
-            else if(info =="student ID" && (duty == Role.student || duty == Role.blockMa))
+            else if (info == "student ID" && (duty == Role.student || duty == Role.blockMa))
             {
                 string newStID = Console.ReadLine();
                 stID = newStID;
                 Console.WriteLine("successful");
             }
-            else if(info == "phone number")
+            else if (info == "phone number")
             {
                 string newPhoneNum = Console.ReadLine();
                 pnumber = newPhoneNum;
                 Console.WriteLine("successful");
             }
-            else if(info == "address")
+            else if (info == "address")
             {
                 string NewAddress = Console.ReadLine();
                 address = NewAddress;
@@ -168,4 +168,4 @@ namespace Project
             }
         }
     }
-}
+//}
