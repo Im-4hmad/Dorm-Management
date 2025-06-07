@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Room;
+using Block;
+using Dorm;
 
 //namespace Person
 //{
@@ -31,6 +34,7 @@ using System.Threading.Tasks;
         public Dorm residingDorm { get; set; }
         //تجهیزات اختصاص داده شده
         public Equipment equipment { get; set; }
+        public Room residingRoom { get; set; }
         //کانستراکتور برای مسئول خوابگاه
         public Person(string Name, string ID, string Pnumber, string Address, Dorm dorm)
         {
@@ -47,7 +51,7 @@ using System.Threading.Tasks;
             resDorm = A;
         }
         //فرض رو بر این گذاشتم که ما برای نمایش لیست مسئولان خوابگاه لیستی که اونا توش ذخیره شدن رو به این متد پاس میدیم و اینجا فقط اسم و خوابگاه تحت مسئولیت نمایش داده میشه
-        public static void ShowDorMa(List<Person> list)
+        public static void ShowDormMa(List<Person> list)
         {
             foreach (Person person in list)
             {
@@ -84,38 +88,67 @@ using System.Threading.Tasks;
         {
             foreach (Person person in list)
             {
-                Console.Write(person.name);
-                person.resBlock.Show();
+            if(person.duty == Role.blockMa)
+                {
+                person.Show();
                 Console.WriteLine();
+
+                }
             }
         }
-        //این متد، هم برای ثبت نام دانشجو هم جا به جایی دانشجو
-        public void SetBlockDorm(Block A, Dorm B)
+        //این متد، هم برای ثبت نام دانشجو در بلوک اتاق و خوابگاه هم جا به جایی دانشجو
+        public void SetDorm(Dorm B)
+        {
+            residingDorm = B;
+        }
+        public void SetBlock(Block A)
         {
             residingBlock = A;
-            residingDorm = B;
+        }
+        public void SetRoom(Room C)
+        {
+            residingRoom = C;
         }
         public void Equip(Equipment A)
         {
             equipment = A;
         }
-        public void Show()
+         // این متد برای نمایش مشخصات دانشجو هست از حمله نمایش بلوک و خوابگاه اختصاص داده شده
+         //متد برای نمایش مشخصات کلی مثل اسم جدا تعریف شده
+        public void ShowSt()
         {
 
-            if (resBlock == null)
+            if (residingDorm == null)
             {
-                Console.WriteLine("Student still doesn't have Block,Dorm and Room");
+                Console.WriteLine("No dorm assigned");
             }
+             else
+             {
+            //نمایش اطلاعات خوابگاه
+            Console.WriteLine($"Current residence Dorm: {this.residingDorm.Name}");
+             }
+            if(residingBlock == null)
+        {
+            Console.WriteLine("No block assigned");
+        }
+        else
+        {
+            //نمایش  بلوک
+            Console.WriteLine($"Current residence block: {this.residingBlock.Name}");
+        }
+            if(residingRoom == null)
+        {
+            Console.WriteLine("No room assigned");
+        }
             else
             {
-                //نمایش هم اتاق هم بیوک
-                //residingBlock.Show();
-                //نمایش اطلاعات خوابگاه
-                //residingDorm.Show();
+               // نمایش اتاق دانشجو
+                Console.WriteLine($"Current residence room: {this.residingRoom.id}");
+
             }
             if (equipment == null)
             {
-                Console.WriteLine("Student still doesn't have any equipment");
+                Console.WriteLine("No Equipment assigned");
             }
             else
             {
@@ -123,8 +156,31 @@ using System.Threading.Tasks;
                 //equipment.Show();
             }
         }
-        //برای تغییر مشخصات دانشجو،مسئول بلوک و مسئول خوابگاه
-        // فرض رو بر این میزارم داخل برنامه اول از کاربر میپرسه چی رو میخواد تغییر بده از این دانشجو و بعد همون ورودی اش پاس داده میشه به این تابع
+    // این متد بیشتر برای متد نمایش لیست مسئولان بلوک و خوابگاه استفاده میشود
+    public void Show()
+    {
+        if(this.duty == Role.blockMa)
+        {
+            Console.WriteLine(this.name);
+            Console.WriteLine(this.pnumber);
+            Console.WriteLine(this.id);
+            Console.WriteLine(this.address);
+            Console.WriteLine($"responsible of block: {resBlock.Name}");
+        }
+        else if(this.duty == Role.dormMa)
+        {
+            Console.WriteLine(this.name);
+            Console.WriteLine(this.pnumber);
+            Console.WriteLine(this.id);
+            Console.WriteLine(this.address);
+            Console.WriteLine($"responsible of dorm: {resDorm.Name}");
+        }
+    }
+        //برای تغییر مشخصات دانشجو و مسئول بلوک 
+        
+    // فرض رو بر این میزارم داخل برنامه اول از کاربر میپرسه چی رو میخواد تغییر بده از این دانشجو و بعد همون ورودی اش پاس داده میشه به این تابع
+
+    //بهتره برای استفاده از این متد در برنامه به کاربر بگیم دقیقا چی  وارد کنه(اینکه میخواد چی رو تغییر بده) یا اینکه با اعداد بگیم اگر با اعداد باشه این متد بعدا قراره کمی تغییر کنه
         public void Edit(string info)
         {
             if (info == null)
