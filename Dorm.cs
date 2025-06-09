@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Equipment;
 //namespace Dorm
 //{
     class Dorm
@@ -17,7 +18,12 @@ using System.Threading.Tasks;
         private Person manager;
         private List <Block> blocks=new List<Block>();
     public string Name { get; set; }
-
+    //list for Equipment Ids needed for Equipment Class
+    public List<String> IDs { get; } = new List<String>();
+    //list for unassigned equipments
+    public List<Equipment> unassignedEquip { get; } = new List<Equipment>();
+    //list for assigned equipments
+    public List<Equipment> assignedEquip { get; } = new List<Equipment>();
     public int Id
     {
         get { return id; }

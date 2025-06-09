@@ -33,7 +33,9 @@ using Dorm;
         //خوابگاه تحت اقامت دانشجو و مسئول بلوک
         public Dorm residingDorm { get; set; }
         //تجهیزات اختصاص داده شده
-        public Equipment equipment { get; set; }
+        private List<Equipment> equipments;
+        public List<Equipment> Equipments { get { return equipments; } } = new List<Equipment>();
+        //اتاق تحت اقامت دانشجو
         public Room residingRoom { get; set; }
         //کانستراکتور برای مسئول خوابگاه
         public Person(string Name, string ID, string Pnumber, string Address, Dorm dorm)
@@ -109,10 +111,7 @@ using Dorm;
         {
             residingRoom = C;
         }
-        public void Equip(Equipment A)
-        {
-            equipment = A;
-        }
+
          // این متد برای نمایش مشخصات دانشجو هست از حمله نمایش بلوک و خوابگاه اختصاص داده شده
          //متد برای نمایش مشخصات کلی مثل اسم جدا تعریف شده
         public void ShowSt()
@@ -223,5 +222,34 @@ using Dorm;
                 Console.WriteLine("not found");
             }
         }
+    public bool CanAcceptEquipment(Equipment e)
+    {
+        int closetNum = this.Equipments.Count(r => r.type == EquipmentType.Closet);
+        int bedNum = this.Equipments.Count(r => r.type == EquipmentType.Bed);
+        int chairNum = this.Equipments.Count(r => r.type == EquipmentType.Chair);
+        int DeskNum = this.Equipments.Count(r => r.type == EquipmentType.Desk);
+
+        if (closetNum == 1 && e.type == EquipmentType.Closet)
+        {
+            //throw new Exception("can't assign more closet to this person");
+            return false;
+        }
+        else if (bedNum == 1 && e.type == EquipmentType.Bed)
+        {
+            //throw new Exception("can't assign more bed to this person");
+            return false;
+        }
+        else if (chairNum == 1 && e.type == EquipmentType.Chair)
+        {
+            //throw new Exception("can't assign more chair to this person");
+            return false;
+        }
+        else if (DeskNum == 1 && e.type == EquipmentType.Desk)
+        {
+            //throw new Exception("can't assign more Desk to this person");
+            return false;
+        }
+        return true;
+    }
     }
 //}
