@@ -9,6 +9,8 @@
         List<Dorm> dorms = new List<Dorm>();
         List<Block> blocks = new List<Block>();
         List<Person> people = new List<Person>();
+    //list for all Equipments in all dorms
+    public static List<Equipment> equipments = new List<Equipment>();
     public static void error()
     {
         Console.WriteLine("please choose a valid option");
