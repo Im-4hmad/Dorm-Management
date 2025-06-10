@@ -47,7 +47,7 @@ using Equipment;
         Console.WriteLine("name of dorm : " + name);
         Console.WriteLine("address of dorm : " + address);
         Console.WriteLine("capacity of dorm : " + capacity);
-        Console.WriteLine("manager of dorm : " + " *** TODO ++++ ");
+        Console.WriteLine("manager of dorm : " + Manager.name);
 
         Console.WriteLine("<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>");
         
@@ -123,7 +123,7 @@ using Equipment;
         else if (choice == 2)
         {
             showBlocks();
-            Console.Write("Enter Block id you wanna delete ; ");
+            Console.Write("Enter Block that you wanna delete ; ");
             int id = int.Parse(Console.ReadLine().Trim());
             foreach (Block block in blocks)
                 if (block.Id == id)

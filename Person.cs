@@ -46,6 +46,7 @@ using Dorm;
             address = Address;
             duty = Role.dormMa;
             resDorm = dorm;
+            dorm.Manager = this;
         }
         //اگر تغییر قرار بود فقط برای مشخصاتی مثل شماره ملی و ... انجام بشه که از همون متد ادیت جلوتر استفاده میشه ولی برای تغییر خوابگاه تحت مسئولیت این کار اینجا انجام میشه
         public void EditDormMa(Dorm A)
