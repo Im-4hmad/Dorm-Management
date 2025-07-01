@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "H:\\source\\DormProject\\DormProject\\DormProject.csproj": {}
+    "E:\\TeamProject - Copy\\DormProject.csproj": {}
   },
   "projects": {
-    "H:\\source\\DormProject\\DormProject\\DormProject.csproj": {
+    "E:\\TeamProject - Copy\\DormProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\source\\DormProject\\DormProject\\DormProject.csproj",
+        "projectUniqueName": "E:\\TeamProject - Copy\\DormProject.csproj",
         "projectName": "DormProject",
-        "projectPath": "H:\\source\\DormProject\\DormProject\\DormProject.csproj",
-        "packagesPath": "C:\\Users\\Ahmadreza\\.nuget\\packages\\",
-        "outputPath": "H:\\source\\DormProject\\DormProject\\obj\\",
+        "projectPath": "E:\\TeamProject - Copy\\DormProject.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "E:\\TeamProject - Copy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Ahmadreza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,13 +38,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -55,17 +49,11 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

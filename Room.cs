@@ -5,9 +5,13 @@ using Equipment;
 //{
     class Room
     {
+    
         private List<Equipment> equipments = new List<Equipment>();
-        public List<Equipment> Equipments = { get{return equipments; } } = new List<Equipment>();
-        public int id, floor, capacity;
+    public List<Equipment> Equipments
+    {
+        get { return equipments; }
+    }
+    public int id, floor, capacity;
         
         // capacity should be <= 6
         //private list<Equipment> equipments

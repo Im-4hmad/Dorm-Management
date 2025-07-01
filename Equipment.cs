@@ -38,6 +38,8 @@ class Equipment
             Dorm.IDs.Add(value);
             } 
     }
+    //توضیحات کاربر برای درخواست تعمیرات
+    public string Description { get; set; }
     private string partNum;
     private Room room;
     private Person owner;
@@ -201,31 +203,32 @@ class Equipment
 
     }
     
-    public static void NeedsRepair(string id)
+    public static void NeedsRepair(string id, string description, List<Equipment> allEquipments)
     {
         if(id == null || id.Length != 8)
         {
             throw new Exception("ID is not valid");
         }
-        if (Menu.equipments == null)
+        if (allEquipments.Count == 0)
         {
             throw new Exception("there are no equipments");
         }
         
-        foreach (var equip in Menu.equipments)
+        foreach (var equip in allEquipments)
         {
             if(equip.ID == id)
             {
                 equip.status = 2;
+                description = description;
                 return;
             }
         }
         throw new Exception("id was not found");
         
     }
-    public static string RepairStatus(string id)
+    public static string RepairStatus(string id, List<Equipment> allEquipments)
     {
-        foreach (var equip in Menu.equipments)
+        foreach (var equip in allEquipments)
         {
             if (equip.ID == id)
             {
@@ -245,18 +248,19 @@ class Equipment
         }
 
     }
-    public static void IsDamaged(string id)
+    //باید لیست تمام تجهیزات داخل کلاس منو هم به عنوان پارامتر داده بشه تا چک کنه 
+    public static void IsDamaged(string id,List<Equipment> allEquipments)
     {
         if (id == null || id.Length != 8)
         {
             throw new Exception("ID is not valid");
         }
-        if (Menu.equipments == null)
+        if (allEquipments.Count == 0)
         {
             throw new Exception("there are no equipments");
         }
 
-        foreach (var equip in Menu.equipments)
+        foreach (var equip in allEquipments)
         {
             if (equip.ID == id)
             {
