@@ -13,7 +13,7 @@ using Equipment;
     class Dorm
     {
     private int id;
-    private string name, address;
+    public string name, address;
         private int capacity;
         private Person manager;
         private List <Block> blocks=new List<Block>();

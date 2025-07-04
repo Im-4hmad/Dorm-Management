@@ -37,8 +37,12 @@ using Dorm;
         public List<Equipment> Equipments { get { return equipments; } } = new List<Equipment>();
         //اتاق تحت اقامت دانشجو
         public Room residingRoom { get; set; }
-        //کانستراکتور برای مسئول خوابگاه
-        public Person(string Name, string ID, string Pnumber, string Address, Dorm dorm)
+         //سه لیست برای ذخیره تاریخچه اقامت دانشجو
+        public List<Dorm> DormHistory { get; set; } = new List<Dorm>();
+       public List<Block> BlockHistory { get; set; } = new List<Block>();
+       public List<Room> RoomHistory { get; set; } = new List<Room>();
+      //کانستراکتور برای مسئول خوابگاه
+    public Person(string Name, string ID, string Pnumber, string Address, Dorm dorm)
         {
             name = Name;
             id = ID;
@@ -103,14 +107,17 @@ using Dorm;
         public void SetDorm(Dorm B)
         {
             residingDorm = B;
+            DormHistory.Add(residingDorm);
         }
         public void SetBlock(Block A)
         {
             residingBlock = A;
+            BlockHistory.Add(residingBlock);
         }
         public void SetRoom(Room C)
         {
             residingRoom = C;
+            RoomHistory.Add(residingRoom);
         }
 
          // این متد برای نمایش مشخصات دانشجو هست از حمله نمایش بلوک و خوابگاه اختصاص داده شده
