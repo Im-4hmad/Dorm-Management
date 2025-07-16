@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 //using Person;
-//namespace Menu
-//{
+namespace DormManagement
+{
 
-class Menu
+public class Menu
     {
 
-        List<Dorm> dorms = new List<Dorm>();
-        List<Block> blocks = new List<Block>();
-        List<Person> people = new List<Person>();
+        public List<Dorm> dorms = new List<Dorm>();
+        public List<Block> blocks = new List<Block>();
+        public List<Person> people = new List<Person>();
         //list for all Equipments in all dorms
-         public static List<Equipment> equipments = new List<Equipment>();
+         public  List<Equipment> equipments = new List<Equipment>();
     public static void error()
     {
         Console.WriteLine("please choose a valid option");
@@ -378,11 +378,11 @@ class Menu
         else
         {
             Console.WriteLine($"The accommodation History of {person.name}:");
-            for (int i = 0; i < people.DormHistory.Count; i++)
+            for (int i = 0; i < person.DormHistory.Count; i++)
             {
-                Conosle.WriteLine($"Dorm: {person.DormHistory[i].Name}");
-                Conosle.WriteLine($"Block: {person.BlockHistory[i].Name}");
-                Conosle.WriteLine($"Room: {person.RoomHistory[i].id}");
+                Console.WriteLine($"Dorm: {person.DormHistory[i].Name}");
+                Console.WriteLine($"Block: {person.BlockHistory[i].Name}");
+                Console.WriteLine($"Room: {person.RoomHistory[i].id}");
                 Console.WriteLine("----------------------------");
             }
 
@@ -392,4 +392,4 @@ class Menu
     }
 
 }
-//}
+}

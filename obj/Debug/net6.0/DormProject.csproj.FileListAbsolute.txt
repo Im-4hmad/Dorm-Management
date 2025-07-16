@@ -1,0 +1,15 @@
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.csproj.AssemblyReference.cache
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.GeneratedMSBuildEditorConfig.editorconfig
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.AssemblyInfoInputs.cache
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.AssemblyInfo.cs
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.csproj.CoreCompileInputs.cache
+E:\project\TeamProject - Copy - Copy - Copy\bin\Debug\net6.0\DormProject.exe
+E:\project\TeamProject - Copy - Copy - Copy\bin\Debug\net6.0\DormProject.deps.json
+E:\project\TeamProject - Copy - Copy - Copy\bin\Debug\net6.0\DormProject.runtimeconfig.json
+E:\project\TeamProject - Copy - Copy - Copy\bin\Debug\net6.0\DormProject.dll
+E:\project\TeamProject - Copy - Copy - Copy\bin\Debug\net6.0\ref\DormProject.dll
+E:\project\TeamProject - Copy - Copy - Copy\bin\Debug\net6.0\DormProject.pdb
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.dll
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\ref\DormProject.dll
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.pdb
+E:\project\TeamProject - Copy - Copy - Copy\obj\Debug\net6.0\DormProject.genruntimeconfig.cache

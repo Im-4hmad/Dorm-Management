@@ -1,8 +1,8 @@
 ﻿using System;
 //using 
-//namespace Block
-//{
-    class Block
+namespace DormManagement
+{
+    public class Block
     {
     private int id;    
     public string Name;
@@ -90,4 +90,4 @@
     }
 }
 
-//}
+}

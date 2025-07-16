@@ -7,16 +7,16 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Equipment;
-//namespace Dorm
-//{
-    class Dorm
+
+namespace DormManagement
+{
+public class Dorm
     {
     private int id;
     public string name, address;
-        private int capacity;
+        public int capacity;
         private Person manager;
-        private List <Block> blocks=new List<Block>();
+        public List <Block> blocks=new List<Block>();
     public string Name { get; set; }
     //list for Equipment Ids needed for Equipment Class
     public List<String> IDs { get; } = new List<String>();
@@ -142,4 +142,4 @@ using Equipment;
         else Console.WriteLine("invalid input");
     }
 }
-//}
+}

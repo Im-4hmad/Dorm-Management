@@ -1,9 +1,9 @@
 ﻿using System;
-using Equipment;
 
-// namespace Room
-//{
-    class Room
+
+ namespace DormManagement
+{
+public class Room
     {
     
         private List<Equipment> equipments = new List<Equipment>();
@@ -53,4 +53,4 @@ using Equipment;
     return true;
 }
     }
-//}
+}

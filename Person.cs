@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Room;
-using Block;
-using Dorm;
 
-//namespace Person
-//{
+
+namespace DormManagement
+{
     public enum Role
     {
         dormMa,
         blockMa,
         student
     }
-    internal class Person
+    public class Person
     {
-
+    
 
         public Role duty { get; set; }
         public String name { get; set; }
@@ -33,8 +31,8 @@ using Dorm;
         //خوابگاه تحت اقامت دانشجو و مسئول بلوک
         public Dorm residingDorm { get; set; }
         //تجهیزات اختصاص داده شده
-        private List<Equipment> equipments;
-        public List<Equipment> Equipments { get { return equipments; } } = new List<Equipment>();
+        private List<Equipment> equipments = new List<Equipment>();
+        public List<Equipment> Equipments { get { return equipments; } }
         //اتاق تحت اقامت دانشجو
         public Room residingRoom { get; set; }
          //سه لیست برای ذخیره تاریخچه اقامت دانشجو
@@ -153,7 +151,7 @@ using Dorm;
                 Console.WriteLine($"Current residence room: {this.residingRoom.id}");
 
             }
-            if (equipment == null)
+            if (equipments.Count == 0)
             {
                 Console.WriteLine("No Equipment assigned");
             }
@@ -260,4 +258,4 @@ using Dorm;
         return true;
     }
     }
-//}
+}

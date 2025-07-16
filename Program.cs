@@ -122,7 +122,7 @@ namespace DormManagement
                     {
                         Console.WriteLine("1-Accommodation status");
                         Console.WriteLine("2-Equipments status");
-                        console.WriteLine("3-Specialized Report");
+                        Console.WriteLine("3-Specialized Report");
                         int n = int.Parse(Console.ReadLine());
 
                         if (n == 1)

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Room;
+/*using Room;
 using Dorm;
-using Person;
-//namespace Equipment
-//{
+using Person;*/
+namespace DormManagement
+{
 public enum EquipmentType
 {
     Fridge = 1,
@@ -13,7 +13,7 @@ public enum EquipmentType
     Chair = 3,
     Bed = 4
 }
-class Equipment
+public class Equipment
 {
     public EquipmentType type;
     //string array with 5 equipment and use partnumber as index to access
@@ -26,16 +26,9 @@ class Equipment
         }
         
         set {
-            for (int i = 0; i < Dorm.IDs.Count; i++)
-            {
-                if(Dorm.IDs[i] == value)
-                {
-                    throw new Exception("ID must be unique");
-                }
-
-            }
+           
             _id = value;
-            Dorm.IDs.Add(value);
+            
             } 
     }
     //توضیحات کاربر برای درخواست تعمیرات
@@ -47,7 +40,7 @@ class Equipment
     //ثبت اموال جدید
     //در menu باید بررسی بشه که کاربر چی میخواد ثبت کنه و خود برنامه فقط کافیه نوع تجهیز رو پاس بده اینجا خودکار پارت نامبر ساخته میشه
     //البته باید از قبل چک شده باشه که شماره اموال مشکلی نداشته باشه و هم خوانی داشتته باشه با پارت نامبر متدش رو توی همین کلاس تعریف میکنم جلوتر
-    public Equipment(EquipmentType Type, string id, Dorm d)
+    public Equipment(EquipmentType Type, string id, Dorm d, Menu m)
     {
         this.type = Type;
 
@@ -73,7 +66,16 @@ class Equipment
         }
         if (this.CheckID(id))
         {
-            ID = id;
+                for (int i = 0; i < m.equipments.Count; i++)
+                {
+                    if (m.equipments[i].ID == id)
+                    {
+                        throw new Exception("ID must be unique");
+                    }
+
+                }
+                ID = id;
+                
         }
         else
         {
@@ -83,7 +85,7 @@ class Equipment
         d.unassignedEquip.Add(this);
         status = 0;
         //اضافه کردنش به لیست اموال کلی
-        Menu.equipments.Add(this);
+        m.equipments.Add(this);
     }
     public bool CheckID(string id)
     {
@@ -246,6 +248,7 @@ class Equipment
                 }
             }
         }
+            return "the item Doesn't exist";
 
     }
     //باید لیست تمام تجهیزات داخل کلاس منو هم به عنوان پارامتر داده بشه تا چک کنه 
@@ -274,4 +277,4 @@ class Equipment
 
 }
 
-//}
+}
