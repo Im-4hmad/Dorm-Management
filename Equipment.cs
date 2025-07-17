@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Linq;
-/*using Room;
-using Dorm;
-using Person;*/
 namespace DormManagement
 {
 public enum EquipmentType
@@ -107,6 +104,10 @@ public class Equipment
     public void AssignEquipTo(Room Room, Dorm d)
     {
         //اول باید چک کنه که یخچال دو تا توی یه اتاق نره بقیه وسایل تا 6 تا میشه
+        if (this.room != null)
+            {
+                throw new Exception("This equipment is already assigned to a room");
+            }
 
         if (Room.CanAcceptEquipment(this))
         {
@@ -221,7 +222,7 @@ public class Equipment
             if(equip.ID == id)
             {
                 equip.status = 2;
-                description = description;
+                equip.Description = description;
                 return;
             }
         }

@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "++dMuLaEalLdSXG1FGFV2Gm/wtuEdQHKuf0YtQR6kFb6deiYQ8DxNfNqjfrIz7QYaJm5mOhVdz4TqTANZvgXAQ==",
+  "dgSpecHash": "HmOnYAyF3VE=",
   "success": true,
-  "projectFilePath": "E:\\project\\TeamProject - Copy - Copy - Copy\\DormProject.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "H:\\source\\Dorm project 4\\Dorm-Management\\DormProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ahmadreza\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Ahmadreza\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Ahmadreza\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\Ahmadreza\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -82,115 +82,15 @@ namespace DormManagement
                     }
                     else if (choice == 3)
                     {
-
+                        m.ManagePeople();
                     }
                     else if (choice == 4)
                     {
-
-                        //this part must be written with try-catch!! and a loop so that user can assign as many items as he please
-
-                        //تخصیص اموال به اتاق ها:
-
-                        // برای تخصیص اموال به اتاق ها متد آماده در کلاس تجهیزات موجوده
-
-                        //فقط قبلش نیاز به یک زیر منو هست تا لیست تمام خوابگاه ها و سپس بلوک ها رو نمایش بده تا بتونه کاربر اتاق مورد نظرش رو انتخاب کنه
-
-                        //بعدش هم یه زیر منو دیگه که بتونه از بین تجهیزات موجود و اختصاص داده نشده یکی رو اختصاص بده به اتاق
-
-                        //نکته مهم اینه که تجهیزات باید متعلق به همون خوابگاه باشن و توی لیست اون خوابگاه باشن
-
-                        //تخصیص اموال به دانشجویان:
-
-
-                        //منطق کار اینه تا وقتی وسیله ای توی اتاقی نیومده نمیتونه صاحب شخصی داشته باشه پس تخصیص فقط به دانشجویان حاضر در اون اتاقه
-
-                        //در ضمن در اون لیستی که نمایش داده میشه از بین وسایل یک اتاق تا به دانشجو اختصاص داده بشه اولا وسایل شخصی بقیه دیگه نباید بیان دوما یخچال هم نباید بیاد توی اون لیست
-
-                        //جا به جایی اموال
-
-                        //اول طبق روال پیش میره تا برسیم به اتاقی که میخوایم از توش وسیله برداریم
-
-                        //ما فقط میتونیم از وسایل بدون مالکیت بین اتاق ها جا به جا کنیم(لیستی که توی کلاس خوابگاه هست)
-
-                        //جابه جایی مالکیت شخصی وسایل فقط بین افراد یک اتاق ممکنه
-
-                        //به یک زیر منو برای حذف مالکیت شخصی هم نیاز داریم اینجا
-
-                        //برای ثبت درخواست تعمیرات یه متن هم از کاربر میگیره
+                        m.ManageEquipment();
                     }
                     else if (choice == 5)
                     {
-                        Console.WriteLine("1-Accommodation status");
-                        Console.WriteLine("2-Equipments status");
-                        Console.WriteLine("3-Specialized Report");
-                        int n = int.Parse(Console.ReadLine());
-
-                        if (n == 1)
-                        {
-                            Console.WriteLine("1-General Student Accommodation Statistics");
-                            Console.WriteLine("2-List of all rooms");
-                            Console.WriteLine("3-Remaining Capacity of Each Dormitory and Block");
-                            int temp = int.Parse(Console.ReadLine());
-                            if (temp == 1)
-                            {
-                                m.GeneralStatus();
-                                Neat();
-                            }
-                            else if (temp == 2) { /* این بخش بعدا باید بر اساس کلاس اتاق تکمیل بشه*/}
-                            else if (temp == 3)
-                            {
-                                m.RemainingCapacity();
-                                Neat();
-                            }
-                            else error();
-
-                        }
-                        else if (n == 2)
-                        {
-                            Console.WriteLine("1-Equipment List");
-                            Console.WriteLine("2-assigned equipments to each room");
-                            Console.WriteLine("3-assigned equipments to each student");
-                            Console.WriteLine("4-list of damaged and under repair equipments");
-                            int temp = int.Parse(Console.ReadLine());
-                            if (temp == 1)
-                            {
-                                m.EquipmentList();
-                                Neat();
-                            }
-                            else if (temp == 2) 
-                                {
-                                    m.RoomEquipments();
-                                    Neat();
-                                }
-                             else if (temp == 3)
-                                {
-                                    m.StudentEquipments();
-                                    Neat();
-                                }
-                                else if (temp == 4)
-                                {
-                                    m.DamagedEquipments();
-                                    Neat();
-                                }
-                                else error();
-                            }
-                        else if(n == 3)
-                        {
-                            Console.WriteLine("1-repair request reports");
-                            Console.WriteLine("2-Students Accommodation History");
-                            int temp = int.Parse(Console.ReadLine());
-                            if(temp == 1)
-                            {
-                                m.RoomEquipments();
-                                Neat();
-                            }
-                            else if(temp == 2)
-                            {
-                                m.AccomodationHistory();
-                                Neat();
-                            }
-                        }
-                       
+                        m.Reporting();
                     }
                     else
                         error();

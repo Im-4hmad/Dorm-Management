@@ -390,6 +390,553 @@ public class Menu
 
 
     }
+        public void ManagePeople()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("People Management:");
+                Console.WriteLine("1- Add Person");
+                Console.WriteLine("2- Delete Person");
+                Console.WriteLine("3- Edit Person");
+                Console.WriteLine("4- Show People");
+                Console.WriteLine("5- Assign Accommodation to Student");
+                Console.WriteLine("0- Back to Main Menu");
 
-}
+                int choice = int.Parse(Console.ReadLine());
+
+                if (choice == 0) break;
+
+                switch (choice)
+                {
+                    case 1:
+                        AddPerosn();
+                        break;
+                    case 2:
+                        DeletePerson();
+                        break;
+                    case 3:
+                        EditPerson();
+                        break;
+                    case 4:
+                        ShowPeople();
+                        break;
+                    case 5:
+                        AssignAccommodation();
+                        break;
+                    default:
+                        error();
+                        break;
+                }
+            }
+        }
+        public void AddPerosn()
+        {
+            Console.Clear();
+            Console.WriteLine("Select role:");
+            Console.WriteLine("1- Student");
+            Console.WriteLine("2- Dorm Manager");
+            Console.WriteLine("3- Block Manager");
+
+            int role = int.Parse(Console.ReadLine());
+
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+            Console.Write("National ID : ");
+            string id = Console.ReadLine();
+            Console.Write("Phone number: ");
+            string phone = Console.ReadLine();
+            Console.Write("Address :");
+            string address = Console.ReadLine();
+
+            if (role == 1)
+            {
+                Console.Write("Student ID: ");
+                string studentId = Console.ReadLine();
+                Person Student = new Person(name, Role.student, id, phone, address, studentId);
+                people.Add(Student);
+            }
+            else if (role == 2)
+            {
+                Console.WriteLine("Select Dorm for the manager:");
+                for (int i = 0; i < dorms.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}- {dorms[i].name}");
+                }
+                int dormInddex = int.Parse(Console.ReadLine()) - 1;
+                Person dormManager = new Person(name, id, phone, address, dorms[dormInddex]);
+                people.Add(dormManager);
+            }
+            else if (role == 3)
+            {
+                Console.WriteLine("Select Block fot the manager: ");
+                for (int i = 0; i < blocks.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}- {blocks[i].Name}");
+                }
+                int blockIndex = int.Parse(Console.ReadLine()) - 1;
+                Person p = new Person(name, Role.student, id, phone, address, "");
+                p.MakeBlockMa(blocks[blockIndex]);
+                people.Add(p);
+            }
+        }
+
+        public void DeletePerson()
+        {
+            Console.Clear();
+            Console.WriteLine("Select person to delete: ");
+            for (int i = 0;i < people.Count;i++)
+            {
+                Console.WriteLine($"{i + 1}- {people[i].name} ({people[i].duty})");
+            }
+            int index = int.Parse(Console.ReadLine()) - 1;
+            if (index >= 0 && index < people.Count)
+            {
+                people.RemoveAt(index);
+                Console.WriteLine("person deleted successfully.");
+            }
+            else
+            {
+                error();
+            }
+        }
+        
+        public void EditPerson()
+        {
+            Console.Clear();
+            Console.WriteLine("Select person to edit: ");
+            for (int i = 0;i < people.Count;i++)
+            {
+                Console.WriteLine($"{i + 1}- {people[i].name} ({people[i].duty})");
+            }
+            int index = int.Parse(Console.ReadLine()) - 1;
+            if (index < 0 || index >= people.Count)
+            {
+                error();
+                return;
+            }
+            Person person = people[index];
+            Console.WriteLine("\"Enter the field to edit: (name / ID / student ID / phone number / address)\"");
+            string field = Console.ReadLine();
+            person.Edit(field);
+        }
+
+        public void ShowPeople()
+        {
+            Console.Clear();
+            foreach(var p in people)
+            {
+                Console.WriteLine($"Name: {p.name}, Role: {p.duty}, ID: {p.id}, Phone: {p.pnumber}");
+            }
+            Console.WriteLine("Press any key to return");
+            Console.ReadKey();
+        }
+
+        public void AssignAccommodation()
+        {
+            Console.Clear();
+            Console.WriteLine("Select a student to assign accommodation:");
+            List<Person> students = new List<Person>();
+            foreach (Person p in people)
+            {
+                if (p.duty == Role.student || p.duty == Role.blockMa)
+                {
+                    students.Add(p);
+                }
+            }
+            for (int i = 0; i < students.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}- {students[i].name}");
+            }
+            int StudentIndex = int.Parse(Console.ReadLine()) - 1;
+            Person student = students[StudentIndex];
+
+            Console.WriteLine("Select Dorm:");
+            for (int i = 0; i < dorms.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}- {dorms[i].name}");
+            }
+            int dormIndex = int.Parse(Console.ReadLine()) - 1;
+            student.SetDorm(dorms[dormIndex]);
+
+            Dorm selectedDorm = dorms[dormIndex];
+            Console.WriteLine("Select Block:");
+            for (int i = 0; i < selectedDorm.blocks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}- {selectedDorm.blocks[i].Name}");
+            }
+            int blockIndex = int.Parse(Console.ReadLine()) - 1;
+            student.SetBlock(selectedDorm.blocks[blockIndex]);
+
+            Block selectedBlock = selectedDorm.blocks[blockIndex];
+            Console.WriteLine("Select Room:");
+            for (int i = 0; i < selectedBlock.rooms.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}- {selectedBlock.rooms[i].id}");
+            }
+            int roomIndex = int.Parse(Console.ReadLine()) - 1;
+            student.SetRoom(selectedBlock.rooms[roomIndex]);
+
+            Console.WriteLine("Accommodation assigned successfully!");
+            Console.ReadKey();
+        }
+
+        public void ManageEquipment()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Equipment Management:");
+                Console.WriteLine("1- Register new equipment");
+                Console.WriteLine("2- Assign to room");
+                Console.WriteLine("3- Assign to student");
+                Console.WriteLine("4- Move equipment");
+                Console.WriteLine("5- Remove personal ownership");
+                Console.WriteLine("6- Mark as damaged or under repair");
+                Console.WriteLine("7- Show all equipments");
+                Console.WriteLine("0- Back");
+
+                int choice = int.Parse(Console.ReadLine());
+                if (choice == 0) break;
+
+                try
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            RegisterEquipment();
+                            break;
+                        case 2:
+                            AssignToRoom();
+                            break;
+                        case 3:
+                            AssignToStudent();
+                            break;
+                        case 4:
+                            MoveEquipment();
+                            break;
+                        case 5:
+                            RemoveOwnership();
+                            break;
+                        case 6:
+                            MarkRepair();
+                            break;
+                        case 7:
+                            EquipmentList();
+                            Console.ReadKey();
+                            break;
+                        default:
+                            error();
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.ReadKey();
+                }
+            }
+        }
+
+        public void RegisterEquipment()
+        {
+            Console.WriteLine("Choose equipment type:");
+            foreach (var t in Enum.GetValues(typeof(EquipmentType)))
+            {
+                Console.WriteLine($"{(int)t}- {t}");
+            }
+
+            EquipmentType type = (EquipmentType)int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter 8-character ID (must start with part number):");
+            string id = Console.ReadLine();
+
+            Console.WriteLine("Choose dorm for equipment:");
+            for (int i = 0; i < dorms.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}- {dorms[i].name}");
+            }
+            int dormIndex = int.Parse(Console.ReadLine()) - 1;
+            Dorm dorm = dorms[dormIndex];
+
+            new Equipment(type, id, dorm, this);
+            Console.WriteLine("Equipment registered successfully!");
+        }
+
+        public void AssignToRoom()
+        {
+            Console.WriteLine("Enter equipment ID:");
+            string id = Console.ReadLine();
+            Equipment eq = null;
+            for (int i = 0;i < equipments.Count; i++)
+            {
+                if (equipments[i].ID == id)
+                {
+                    eq = equipments[i];
+                    break;
+                }
+            }
+            if (eq == null)
+                throw new Exception("Equipment not found");
+
+            Console.WriteLine("Choose dorm:");
+            for (int i = 0; i < dorms.Count; i++)
+                Console.WriteLine($"{i + 1}- {dorms[i].name}");
+            Dorm dorm = dorms[int.Parse(Console.ReadLine()) - 1];
+
+            Console.WriteLine("Choose block:");
+            for (int i = 0; i < dorm.blocks.Count; i++)
+                Console.WriteLine($"{i + 1}- {dorm.blocks[i].Name}");
+            Block block = dorm.blocks[int.Parse(Console.ReadLine()) - 1];
+
+            Console.WriteLine("Choose room:");
+            for (int i = 0; i < block.rooms.Count; i++)
+                Console.WriteLine($"{i + 1}- Room {block.rooms[i].id}");
+            Room room = block.rooms[int.Parse(Console.ReadLine()) - 1];
+
+            eq.AssignEquipTo(room, dorm);
+            Console.WriteLine("Assigned to room.");
+        }
+
+        public void AssignToStudent()
+        {
+            Console.WriteLine("Enter equipment ID:");
+            string id = Console.ReadLine();
+            Equipment eq = null;
+            for (int i = 0; i < equipments.Count; i++)
+            {
+                if (equipments[i].ID == id)
+                {
+                    eq = equipments[i];
+                    break;
+                }
+            }
+            if (eq == null)
+                throw new Exception("Equipment not found");
+
+            Console.WriteLine("Select student:");
+            List<Person> students = people.Where(p => p.duty != Role.dormMa).ToList();
+            for (int i = 0; i < students.Count; i++)
+                Console.WriteLine($"{i + 1}- {students[i].name}");
+            Person student = students[int.Parse(Console.ReadLine()) - 1];
+
+            eq.AssignEquipTo(student);
+            Console.WriteLine("Assigned to student.");
+        }
+
+        public void MoveEquipment()
+        {
+            Console.WriteLine("Enter equipment ID:");
+            string id = Console.ReadLine();
+            Equipment eq = null;
+            for (int i = 0; i < equipments.Count; i++)
+            {
+                if (equipments[i].ID == id)
+                {
+                    eq = equipments[i];
+                    break;
+                }
+            }
+            if (eq == null)
+                throw new Exception("Equipment not found");
+
+            Console.WriteLine("Move to:");
+            Console.WriteLine("1- Another room");
+            Console.WriteLine("2- Another student");
+            int choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                Console.WriteLine("Choose dorm:");
+                for (int i = 0; i < dorms.Count; i++)
+                    Console.WriteLine($"{i + 1}- {dorms[i].name}");
+                Dorm dorm = dorms[int.Parse(Console.ReadLine()) - 1];
+
+                Console.WriteLine("Choose block:");
+                for (int i = 0; i < dorm.blocks.Count; i++)
+                    Console.WriteLine($"{i + 1}- {dorm.blocks[i].Name}");
+                Block block = dorm.blocks[int.Parse(Console.ReadLine()) - 1];
+
+                Console.WriteLine("Choose room:");
+                for (int i = 0; i < block.rooms.Count; i++)
+                    Console.WriteLine($"{i + 1}- Room {block.rooms[i].id}");
+                Room room = block.rooms[int.Parse(Console.ReadLine()) - 1];
+
+                eq.ReassignEquip(room);
+                Console.WriteLine("Equipment moved to another room.");
+            }
+            else if (choice == 2)
+            {
+                Console.WriteLine("Select new student:");
+                List<Person> students = people.Where(p => p.duty != Role.dormMa).ToList();
+                for (int i = 0; i < students.Count; i++)
+                    Console.WriteLine($"{i + 1}- {students[i].name}");
+                Person student = students[int.Parse(Console.ReadLine()) - 1];
+
+                eq.ReassignEquip(student);
+                Console.WriteLine("Equipment reassigned to another student.");
+            }
+        }
+
+        public void RemoveOwnership()
+        {
+            Console.WriteLine("Enter equipment ID:");
+            string id = Console.ReadLine();
+            Equipment eq = null;
+            for (int i = 0; i < equipments.Count; i++)
+            {
+                if (equipments[i].ID == id)
+                {
+                    eq = equipments[i];
+                    break;
+                }
+            }
+            if (eq == null)
+                throw new Exception("Equipment not found");
+
+            eq.DeleteOwner();
+            Console.WriteLine("Ownership removed.");
+        }
+
+        public void MarkRepair()
+        {
+            Console.WriteLine("Enter equipment ID:");
+            string id = Console.ReadLine();
+            Equipment eq = null;
+            for (int i = 0; i < equipments.Count; i++)
+            {
+                if (equipments[i].ID == id)
+                {
+                    eq = equipments[i];
+                    break;
+                }
+            }
+            if (eq == null)
+                throw new Exception("Equipment not found");
+
+            Console.WriteLine("1- Mark as damaged");
+            Console.WriteLine("2- Mark as under repair");
+
+            int choice = int.Parse(Console.ReadLine());
+            if (choice == 1)
+            {
+                Equipment.IsDamaged(id, equipments);
+                Console.WriteLine("Marked as damaged.");
+            }
+            else if (choice == 2)
+            {
+                Console.Write("Enter repair description: ");
+                string desc = Console.ReadLine();
+                Equipment.NeedsRepair(id, desc, equipments);
+                Console.WriteLine("Marked as under repair.");
+            }
+        }
+
+        public void Reporting()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Reporting Menu:");
+                Console.WriteLine("1- Accommodation Status");
+                Console.WriteLine("2- Equipment Status");
+                Console.WriteLine("3- Specialized Reports");
+                Console.WriteLine("0- Back");
+
+                int choice = int.Parse(Console.ReadLine());
+                if (choice == 0) break;
+
+                switch (choice)
+                {
+                    case 1:
+                        AccommodationReports();
+                        break;
+                    case 2:
+                        EquipmentReports();
+                        break;
+                    case 3:
+                        SpecializedReports();
+                        break;
+                    default:
+                        error();
+                        break;
+                }
+            }
+        }
+
+        public void AccommodationReports()
+        {
+            Console.Clear();
+            Console.WriteLine("1- General Student Accommodation Statistics");
+            Console.WriteLine("2- List of all rooms and their status");
+            Console.WriteLine("3- Remaining capacity of each dorm and block");
+
+            int option = int.Parse(Console.ReadLine());
+            if (option == 1) GeneralStatus();
+            else if (option == 2) ShowAllRooms();
+            else if (option == 3) RemainingCapacity();
+            else error();
+
+            Console.WriteLine("Press Enter to return");
+            Console.ReadLine();
+        }
+
+        public void ShowAllRooms()
+        {
+            foreach (Dorm dorm in dorms)
+            {
+                Console.WriteLine($"Dorm: {dorm.name}");
+                foreach (Block block in dorm.blocks)
+                {
+                    Console.WriteLine($"  Block: {block.Name}");
+                    foreach (Room room in block.rooms)
+                    {
+                        int studentsInRoom = 0;
+                        for (int i = 0; i < people.Count; i++)
+                        {
+                            if (people[i].residingRoom == room)
+                                studentsInRoom++;
+                        }
+                        Console.WriteLine($"    Room {room.id} - Capacity: 6 - Occupied: {studentsInRoom}");
+                    }
+                }
+                Console.WriteLine("----------------------------------");
+            }
+        }
+
+        public void EquipmentReports()
+        {
+            Console.Clear();
+            Console.WriteLine("1- Equipment List");
+            Console.WriteLine("2- Equipments assigned to each room");
+            Console.WriteLine("3- Equipments assigned to each student");
+            Console.WriteLine("4- Damaged / Under Repair equipments");
+
+            int option = int.Parse(Console.ReadLine());
+            if (option == 1) EquipmentList();
+            else if (option == 2) RoomEquipments();
+            else if (option == 3) StudentEquipments();
+            else if (option == 4) DamagedEquipments();
+            else error();
+
+            Console.WriteLine("Press Enter to return");
+            Console.ReadLine();
+        }
+
+        public void SpecializedReports()
+        {
+            Console.Clear();
+            Console.WriteLine("1- Repair request descriptions");
+            Console.WriteLine("2- Student accommodation history");
+
+            int option = int.Parse(Console.ReadLine());
+            if (option == 1) RepairRequests();
+            else if (option == 2) AccomodationHistory();
+            else error();
+
+            Console.WriteLine("Press Enter to return");
+            Console.ReadLine();
+        }
+
+    }
 }
