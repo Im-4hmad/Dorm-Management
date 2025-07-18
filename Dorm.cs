@@ -34,6 +34,7 @@ public class Dorm
         this.name = name;
         this.address = address;
         this.capacity = capacity;
+            this.manager = new Person();
     }
     public Person Manager
     {
@@ -47,9 +48,11 @@ public class Dorm
         Console.WriteLine("name of dorm : " + name);
         Console.WriteLine("address of dorm : " + address);
         Console.WriteLine("capacity of dorm : " + capacity);
-        Console.WriteLine("manager of dorm : " + Manager.name);
+            if (Manager.id != "-1")
+                Console.WriteLine("manager of dorm : " + Manager.name);
+            else Console.WriteLine("no manager asigned yet");
 
-        Console.WriteLine("<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>");
+                Console.WriteLine("<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>");
         
     }
     public void update()
@@ -74,10 +77,10 @@ public class Dorm
         }
         if (choice == 2)
         {
-            Console.WriteLine("Enter new address ");
+           Console.WriteLine("Enter new address ");
             address = Console.ReadLine().Trim();
         }
-        if (choice == 3)
+                 if (choice == 3)
         {
             Console.WriteLine("Enter new capacity ");
             capacity = int.Parse(Console.ReadLine().Trim());
@@ -108,9 +111,9 @@ public class Dorm
         }
         else if (choice == 1)
         {
-            int id = 1;
+            int Blockid = 1;
             foreach (Block block in blocks)
-                id += block.Id;
+                    Blockid += block.Id;
             string name;
             int floor;
             Console.Write("Enter Block name ; ");
@@ -118,7 +121,8 @@ public class Dorm
             Console.Write("Enter Block floor count ; ");
 
             floor = int.Parse(Console.ReadLine());
-            blocks.Add(new Block(name, floor, id));
+            blocks.Add(new Block(name, floor, Blockid, this.id));
+                
         }
         else if (choice == 2)
         {
@@ -137,9 +141,56 @@ public class Dorm
         else if (choice == 3)
         {
 
-            // update stuff
-        }
-        else Console.WriteLine("invalid input");
+                Console.WriteLine("1-Edit block info");
+                Console.WriteLine("2-room management");
+                 choice = int.Parse(Console.ReadLine());
+                if (choice == 1)
+                {
+
+                    Console.WriteLine("choose the id of block to update");
+
+                    showBlocks();
+
+                    choice = int.Parse(Console.ReadLine());
+
+                    foreach (Block block in blocks)
+                        if (block.
+                        Id == choice)
+                        {
+
+                            block.update();
+                            return;
+                        }
+
+                    Console.WriteLine("not found the dorm with the corresponding id");
+                }
+                else if (choice == 2)
+                {
+
+                    Console.WriteLine("choose the id of block you wanna manage the rooms");
+
+                    showBlocks();
+                    choice = int.Parse(Console.ReadLine());
+
+
+                    foreach (Block block in blocks)
+                        if (block.
+                        Id == choice)
+                        {
+
+                            block.manageRooms();
+                            return;
+                        }
+
+                    
+
+                    Console.WriteLine("not found the block with the corresponding id");
+
+                }
+
+               
+            }
+            else Console.WriteLine("invalid input");
     }
 }
 }

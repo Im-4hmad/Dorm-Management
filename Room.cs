@@ -7,16 +7,30 @@ public class Room
     {
     
         private List<Equipment> equipments = new List<Equipment>();
+        private List<Person> persons = new List<Person>();
     public List<Equipment> Equipments
     {
         get { return equipments; }
     }
+        public void Show()
+        {
+
+        }
     public int id, floor, capacity;
-        
+        public int blockId,dormId;
         // capacity should be <= 6
         //private list<Equipment> equipments
         //private list<Student> students
         //
+        public Room(int id, int floor,int blockId,int dormId, int capacity=6)
+        {
+            this.id = id;   
+                
+            this.floor = floor;
+            this.capacity = capacity;
+            this.blockId = blockId;
+            this.dormId = dormId;
+        }
         public bool CanAcceptEquipment(Equipment e)
         {
         int closetNum = this.Equipments.Count(r => r.type == EquipmentType.Closet);

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Linq;
 //using Person;
 namespace DormManagement
 {
 
-public class Menu
+public  class Menu
     {
 
         public List<Dorm> dorms = new List<Dorm>();
@@ -16,6 +17,17 @@ public class Menu
     {
         Console.WriteLine("please choose a valid option");
     }
+        public void updateBlocks()
+        {
+            blocks.Clear();
+            foreach (Dorm dorm in dorms) {
+                Console.WriteLine("here");
+                foreach (Block b in dorm.blocks)
+                {
+                    blocks.Add(b);
+                }
+            }
+        }
     public void addDorm()
         {
             string name, address;
@@ -29,6 +41,7 @@ public class Menu
         int id = 1;
         foreach (Dorm d in dorms) id += d.Id ;
             dorms.Add(new Dorm(name, address, capacity,id));
+      
         }
 
     public void showDorms()
@@ -64,7 +77,7 @@ public class Menu
             }
         //dorms.RemoveAt(choice - 1);
         Console.WriteLine("not found the dorm with the corresponding id");
-
+       
     }
     public void updateDorm()
     {
@@ -117,8 +130,8 @@ public class Menu
 
         }
 
-
-    }
+          
+        }
     public void showBlocks()
     {
         //int cnt = 1;
@@ -469,6 +482,11 @@ public class Menu
             }
             else if (role == 3)
             {
+                if(blocks.Count==0)
+                {
+                    Console.WriteLine("first add a block ");
+                    return;
+                }
                 Console.WriteLine("Select Block fot the manager: ");
                 for (int i = 0; i < blocks.Count; i++)
                 {

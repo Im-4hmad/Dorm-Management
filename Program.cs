@@ -40,16 +40,16 @@ namespace DormManagement
             //Console.Read();
             while (true)
             {
+                m.updateBlocks();
                 try
                 {
 
 
                     Console.WriteLine("please choose an option: ");
-                    Console.WriteLine("1-Drom management");
-                    Console.WriteLine("2-Block management");
-                    Console.WriteLine("3-Student management");
-                    Console.WriteLine("4-equipment management");
-                    Console.WriteLine("5-Reporting");
+                    Console.WriteLine("1-Dorm management");
+                    Console.WriteLine("2-Student management");
+                    Console.WriteLine("3-equipment management");
+                    Console.WriteLine("4-Reporting");
                     int choice = int.Parse(Console.ReadLine());
 
                     if (choice == 1)
@@ -68,27 +68,13 @@ namespace DormManagement
                     }
                     else if (choice == 2)
                     {
-
-                        //Console.WriteLine("1-Add Block");
-                        //Console.WriteLine("2-Delete Block");
-                        //Console.WriteLine("3-Edit Block");
-                        //Console.WriteLine("4-show Block");
-                        //choice = int.Parse(Console.ReadLine().Trim());
-                        //if (choice == 1) m.addBlock();
-                        //else if (choice == 2) m.deleteBlock();
-                        //else if (choice == 3) m.updateBlock();
-                        //else if (choice == 4) m.showBlocks();
-                        //else error();
+                        m.ManagePeople();
                     }
                     else if (choice == 3)
                     {
-                        m.ManagePeople();
-                    }
-                    else if (choice == 4)
-                    {
                         m.ManageEquipment();
                     }
-                    else if (choice == 5)
+                    else if (choice == 4)
                     {
                         m.Reporting();
                     }

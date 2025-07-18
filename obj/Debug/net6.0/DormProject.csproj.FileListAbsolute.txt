@@ -28,3 +28,18 @@ H:\source\Dorm project 4\Dorm-Management\bin\Debug\net6.0\DormProject.pdb
 H:\source\Dorm project 4\Dorm-Management\obj\Debug\net6.0\refint\DormProject.dll
 H:\source\Dorm project 4\Dorm-Management\obj\Debug\net6.0\DormProject.genruntimeconfig.cache
 H:\source\Dorm project 4\Dorm-Management\obj\Debug\net6.0\ref\DormProject.dll
+E:\Codes\C#\Dorm-Management\bin\Debug\net6.0\DormProject.exe
+E:\Codes\C#\Dorm-Management\bin\Debug\net6.0\DormProject.deps.json
+E:\Codes\C#\Dorm-Management\bin\Debug\net6.0\DormProject.runtimeconfig.json
+E:\Codes\C#\Dorm-Management\bin\Debug\net6.0\DormProject.dll
+E:\Codes\C#\Dorm-Management\bin\Debug\net6.0\DormProject.pdb
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.GeneratedMSBuildEditorConfig.editorconfig
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.AssemblyInfoInputs.cache
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.AssemblyInfo.cs
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.csproj.CoreCompileInputs.cache
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.sourcelink.json
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.dll
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\refint\DormProject.dll
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.pdb
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\DormProject.genruntimeconfig.cache
+E:\Codes\C#\Dorm-Management\obj\Debug\net6.0\ref\DormProject.dll
