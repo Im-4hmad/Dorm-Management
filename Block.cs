@@ -90,18 +90,43 @@ namespace DormManagement
             }
             foreach (Room room in rooms) room.Show();
         }
-        public void addRoom(int floor=-1)
+        public void addRoom(Menu m,int floor=-1)
         {
             int roomId = 1;
             foreach (Room room in rooms)
                 roomId += room.id;
 
-            
+            //finding dorm
+            Dorm dorm = null;
+            foreach(Dorm Dorm in m.dorms)
+            {
+                if(this.dormId == Dorm.Id)
+                {
+                    dorm = Dorm;
+                    break;
+                }
+            }
+            //calculating capacity of all rooms in this dorm
+            int roomCapacity = 0;
+            foreach(Block block in dorm.blocks)
+            {
+                foreach(Room room in block.rooms)
+                {
+                    roomCapacity += 6;
+                }
+            }
 
+            //comparing it to the total capacity of dorm to check if it is possible to add a room
+            if(roomCapacity == dorm.capacity)
+            {
+                Console.WriteLine($"can't add a room in dorm {dorm.name} because it is full");
+                Console.ReadKey();
+                return;
+            }
           
             rooms.Add(new Room(roomId, floor, this.id, dormId, 6));
         }
-        public void manageRooms()
+        public void manageRooms(Menu m)
         {
             Console.WriteLine("managing rooms");
             Console.WriteLine("1-Add room");
@@ -116,9 +141,15 @@ namespace DormManagement
             {
                 int floor;
 
-                Console.Write("Enter room fllor ; ");
+                Console.Write("Enter room floor ; ");
                 floor = int.Parse(Console.ReadLine());
-                addRoom(floor);
+                if(this.Floors < floor || floor < 0)
+                {
+                    Console.WriteLine("please enter a valid input");
+                    Console.ReadKey();
+                    return;
+                }
+                addRoom(m,floor);
 
             }
             else if (choice == 2)
@@ -150,8 +181,11 @@ namespace DormManagement
             }
             if (choice == 3)
             {
+           
                 Console.WriteLine("Enter new room count ");
-                NumRooms = int.Parse(Console.ReadLine().Trim());
+                
+                int NumRooms = int.Parse(Console.ReadLine().Trim());
+           
             }
             Console.WriteLine("updated successfully");
             this.Show();
@@ -163,7 +197,7 @@ namespace DormManagement
         Console.WriteLine($"Block name : {Name}");
             //Console.WriteLine($"The corresponding dormitory : {The_Corresponding_Dormitory}");
             Console.WriteLine($"Number of floors : {Floors}");
-        Console.WriteLine($"Number of roomes : {rooms.Count}");
+        Console.WriteLine($"Number of rooms : {rooms.Count}");
         Console.WriteLine("<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>");
 
         //Console.WriteLine($"Number of Rooms : {NumRooms}");

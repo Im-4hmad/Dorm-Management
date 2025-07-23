@@ -36,8 +36,14 @@ public  class Menu
             name = Console.ReadLine();
             Console.Write("Enter Dorm address ; ");
             address = Console.ReadLine();
-            Console.Write("Enter Dorm capacity ; ");
+            Console.Write("Enter Dorm capacity(it must be a multiple of six) ; ");
             capacity = int.Parse(Console.ReadLine());
+            if(capacity % 6 != 0)
+            {
+                error();
+                Console.ReadKey();
+                return;
+            }
         int id = 1;
         foreach (Dorm d in dorms) id += d.Id ;
             dorms.Add(new Dorm(name, address, capacity,id));
@@ -122,7 +128,7 @@ public  class Menu
                 Id == choice)
                 {
 
-                    dorm.manageBlocks();
+                    dorm.manageBlocks(this);
                     return;
                 }
 
@@ -172,8 +178,13 @@ public  class Menu
         Console.WriteLine($"number of all blocks: {blocks.Count}");
         Console.WriteLine($"number of all rooms: {numOfRoom}");
         Console.WriteLine();
-        Console.WriteLine($"total capacity of all dorms: {numOfRoom*6}");
-        Console.WriteLine($"remaining capacity: {numOfRoom * 6 - accommodated}");
+            int temp = 0;
+            for(int i = 0;i< dorms.Count; i++)
+            {
+                temp += dorms[i].capacity;
+            }
+        Console.WriteLine($"total capacity of all dorms: {temp}");
+        Console.WriteLine($"remaining capacity: {temp - accommodated}");
 
     }
     public void RemainingCapacity()
@@ -187,7 +198,7 @@ public  class Menu
             {
                 if(person.duty != Role.dormMa)
                 {
-                    if(person.residingDorm.name == dorm.name) counter++;
+                    if(person.residingDorm != null &&person.residingDorm.Id == dorm.Id) counter++;
                 }
             }
 
@@ -202,7 +213,7 @@ public  class Menu
                 {
                     if (person.duty != Role.dormMa)
                     {
-                        if (person.residingBlock.Name == block.Name) counter++;
+                        if ( person.residingBlock != null &&  person.residingBlock.Id == block.Id) counter++;
                     }
                 }
 
@@ -418,7 +429,11 @@ public  class Menu
 
                 int choice = int.Parse(Console.ReadLine());
 
-                if (choice == 0) break;
+                if (choice == 0)
+                {
+                    Console.Clear();
+                    break;
+                }
 
                 switch (choice)
                 {
@@ -502,12 +517,20 @@ public  class Menu
         public void DeletePerson()
         {
             Console.Clear();
+            if(people.Count == 0)
+            {
+                Console.WriteLine("there is no person");
+                Console.ReadKey();
+                return;
+            }
             Console.WriteLine("Select person to delete: ");
             for (int i = 0;i < people.Count;i++)
             {
                 Console.WriteLine($"{i + 1}- {people[i].name} ({people[i].duty})");
             }
-            int index = int.Parse(Console.ReadLine()) - 1;
+            string index1 = Console.ReadLine();
+            bool isint = int.TryParse(index1, out int index);
+            index--;
             if (index >= 0 && index < people.Count)
             {
                 people.RemoveAt(index);
@@ -522,13 +545,21 @@ public  class Menu
         public void EditPerson()
         {
             Console.Clear();
+            if (people.Count == 0)
+            {
+                Console.WriteLine("there is no person");
+                Console.ReadKey();
+                return;
+            }
             Console.WriteLine("Select person to edit: ");
             for (int i = 0;i < people.Count;i++)
             {
                 Console.WriteLine($"{i + 1}- {people[i].name} ({people[i].duty})");
             }
-            int index = int.Parse(Console.ReadLine()) - 1;
-            if (index < 0 || index >= people.Count)
+            string index1 = Console.ReadLine();
+            bool isint = int.TryParse(index1, out int index);
+            index--;
+            if (index < 0 || index >= people.Count || !isint)
             {
                 error();
                 return;
@@ -553,6 +584,12 @@ public  class Menu
         public void AssignAccommodation()
         {
             Console.Clear();
+            if (people.Count == 0)
+            {
+                Console.WriteLine("there is no person");
+                Console.ReadKey();
+                return;
+            }
             Console.WriteLine("Select a student to assign accommodation:");
             List<Person> students = new List<Person>();
             foreach (Person p in people)
@@ -566,7 +603,14 @@ public  class Menu
             {
                 Console.WriteLine($"{i + 1}- {students[i].name}");
             }
-            int StudentIndex = int.Parse(Console.ReadLine()) - 1;
+            string StudentIndex1 = Console.ReadLine();
+            bool isint = int.TryParse(StudentIndex1, out int StudentIndex);
+                StudentIndex--;
+            if (!isint)
+            {
+
+                return;
+            }
             Person student = students[StudentIndex];
 
             Console.WriteLine("Select Dorm:");
@@ -593,7 +637,19 @@ public  class Menu
                 Console.WriteLine($"{i + 1}- {selectedBlock.rooms[i].id}");
             }
             int roomIndex = int.Parse(Console.ReadLine()) - 1;
-            student.SetRoom(selectedBlock.rooms[roomIndex]);
+            
+            if (selectedBlock.rooms[roomIndex].CanWelcome())
+            {
+                student.SetRoom(selectedBlock.rooms[roomIndex]);         
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("the room is full!");
+                Console.ReadKey();
+                return;
+            }
+            
 
             Console.WriteLine("Accommodation assigned successfully!");
             Console.ReadKey();
@@ -615,7 +671,11 @@ public  class Menu
                 Console.WriteLine("0- Back");
 
                 int choice = int.Parse(Console.ReadLine());
-                if (choice == 0) break;
+                if (choice == 0)
+                {
+                    Console.Clear();
+                    break;
+                }
 
                 try
                 {
@@ -661,7 +721,10 @@ public  class Menu
             Console.WriteLine("Choose equipment type:");
             foreach (var t in Enum.GetValues(typeof(EquipmentType)))
             {
-                Console.WriteLine($"{(int)t}- {t}");
+                Console.Write($"{(int)t}- {t}");
+                Console.Write($"(part number:00{(int)t})");
+                Console.WriteLine();
+               
             }
 
             EquipmentType type = (EquipmentType)int.Parse(Console.ReadLine());

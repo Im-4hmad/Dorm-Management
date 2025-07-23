@@ -124,8 +124,25 @@ namespace DormManagement
         }
         public void SetRoom(Room C)
         {
-            residingRoom = C;
-            RoomHistory.Add(residingRoom);
+            if (residingRoom == null)
+            {
+                residingRoom = C;
+                RoomHistory.Add(residingRoom);
+                C.people.Add(this);
+            }
+            //جابه جاییه
+            else
+            {
+                //حذف کردن از اتاق قدیمی
+                residingRoom.people.Remove(this);
+                //اضافه کردن به اتاق جدید
+                C.people.Add(this);
+                //ثبت در اتاق جدید
+                residingRoom =C;
+                //ثبت تاریخچه
+                RoomHistory.Add(residingRoom);
+
+            }
         }
 
          // این متد برای نمایش مشخصات دانشجو هست از حمله نمایش بلوک و خوابگاه اختصاص داده شده
