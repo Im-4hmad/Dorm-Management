@@ -54,11 +54,9 @@ public  class Menu
     public void showDorms()
     {
             Console.Clear ();
-        //int cnt = 1;
         foreach (Dorm d in dorms) {
-            //Console.WriteLine(d.Id + " - "); s
+
             d.Show();
-            //cnt++;
         }
        
     }
@@ -84,7 +82,7 @@ public  class Menu
                 Console.WriteLine("deletion successful");
                 return;
             }
-        //dorms.RemoveAt(choice - 1);
+
         Console.WriteLine("not found the dorm with the corresponding id");
        
     }
@@ -142,17 +140,7 @@ public  class Menu
 
           
         }
-    public void showBlocks()
-    {
-        //int cnt = 1;
-        //foreach (Block b in dorms)
-        //{
-        //    Console.WriteLine(cnt + " - ");
-        //    b.Show();
-        //    cnt++;
-        //}
 
-    }
     //برای گزارش گیری
     //وضعیت کلی اسکان
     public void GeneralStatus()
