@@ -109,6 +109,7 @@ public class Equipment
                 throw new Exception("This equipment is already assigned to a room");
             }
 
+
         if (Room.CanAcceptEquipment(this))
         {
             Room.Equipments.Add(this);
@@ -125,6 +126,10 @@ public class Equipment
     //متد برای تخصیص اموال به دانشجو
     public void AssignEquipTo(Person person)
     {
+            if(this.type == EquipmentType.Fridge)
+            {
+                throw new Exception("can't assign a fridge to a person");
+            }
 
         if (person.CanAcceptEquipment(this))
         {

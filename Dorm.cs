@@ -97,7 +97,7 @@ public class Dorm
         }
         foreach (Block block in blocks) block.Show();
     }
-    public void manageBlocks()
+    public void manageBlocks(Menu m)
     {
         Console.WriteLine("managing blocks");
         Console.WriteLine("1-Add Block");
@@ -168,7 +168,11 @@ public class Dorm
                 {
 
                     Console.WriteLine("choose the id of block you wanna manage the rooms");
-
+                    if(this.blocks.Count == 0)
+                    {
+                        Console.WriteLine("there is no block :(");
+                        return;
+                    }
                     showBlocks();
                     choice = int.Parse(Console.ReadLine());
 
@@ -178,7 +182,7 @@ public class Dorm
                         Id == choice)
                         {
 
-                            block.manageRooms();
+                            block.manageRooms(m);
                             return;
                         }
 
