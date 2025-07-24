@@ -30,6 +30,7 @@ public  class Menu
         }
     public void addDorm()
         {
+            Console.Clear();
             string name, address;
             int capacity;
             Console.Write("Enter Dorm name ; ");
@@ -52,6 +53,7 @@ public  class Menu
 
     public void showDorms()
     {
+            Console.Clear ();
         //int cnt = 1;
         foreach (Dorm d in dorms) {
             //Console.WriteLine(d.Id + " - "); s
@@ -62,6 +64,7 @@ public  class Menu
     }
     public void deleteDorm()
     {
+            Console.Clear();
         if (dorms.Count == 0)
         {
             Console.WriteLine("NO Dorms available to Delete");
@@ -87,6 +90,7 @@ public  class Menu
     }
     public void updateDorm()
     {
+            Console.Clear();
         if (dorms.Count == 0)
         {
             Console.WriteLine("NO Dorms available to update");
@@ -590,6 +594,18 @@ public  class Menu
                 Console.ReadKey();
                 return;
             }
+            //check if there is any room
+            int roomCount = 0;
+            foreach(Block b in blocks)
+            {
+                foreach(Room r in b.rooms) roomCount++;
+            }
+            if(blocks.Count == 0 || roomCount == 0)
+            {
+                Console.WriteLine("there is no room to assign");
+                Console.ReadKey();
+                return;
+            }
             Console.WriteLine("Select a student to assign accommodation:");
             List<Person> students = new List<Person>();
             foreach (Person p in people)
@@ -848,6 +864,12 @@ public  class Menu
             }
             else if (choice == 2)
             {
+                if(eq.type == EquipmentType.Fridge)
+                {
+                    Console.WriteLine("can't assign a fridge to a person");
+                    Console.ReadKey();
+                    return;
+                }
                 Console.WriteLine("Select new student:");
                 List<Person> students = people.Where(p => p.duty != Role.dormMa).ToList();
                 for (int i = 0; i < students.Count; i++)

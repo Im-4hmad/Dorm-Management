@@ -8,7 +8,7 @@ namespace DormManagement
     public class Block
     {
     private int id;
-        private int dormId;
+        public int dormId;
     public string Name;
         //public string The_Corresponding_Dormitory;
         public int Floors;
@@ -88,7 +88,7 @@ namespace DormManagement
                 Console.WriteLine("no room :(");
                 return;
             }
-            foreach (Room room in rooms) room.Show();
+            foreach (Room room in rooms) room.Show(this);
         }
         public void addRoom(Menu m,int floor=-1)
         {
@@ -128,6 +128,7 @@ namespace DormManagement
         }
         public void manageRooms(Menu m)
         {
+            Console.Clear();
             Console.WriteLine("managing rooms");
             Console.WriteLine("1-Add room");
             Console.WriteLine("2-show rooms");
@@ -154,6 +155,7 @@ namespace DormManagement
             }
             else if (choice == 2)
             {
+                Console.Clear();
                 showRooms();
                 
             }

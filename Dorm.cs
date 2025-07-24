@@ -43,6 +43,7 @@ public class Dorm
     }
     public void Show()
     {
+            
         Console.WriteLine("Id of dorm : " + id);
 
         Console.WriteLine("name of dorm : " + name);
@@ -57,6 +58,7 @@ public class Dorm
     }
     public void update()
     {
+            Console.Clear();
         Console.WriteLine("choose what u wanna update  : ");
         Console.WriteLine("1- name "  );
         Console.WriteLine("2- address ");
@@ -99,6 +101,7 @@ public class Dorm
     }
     public void manageBlocks(Menu m)
     {
+            Console.Clear();
         Console.WriteLine("managing blocks");
         Console.WriteLine("1-Add Block");
         Console.WriteLine("2-Delete Block");
@@ -126,6 +129,11 @@ public class Dorm
         }
         else if (choice == 2)
         {
+                if(this.blocks.Count == 0)
+                {
+                    Console.WriteLine("no blocks :(");
+                    return;
+                }
             showBlocks();
             Console.Write("Enter Block that you wanna delete ; ");
             int id = int.Parse(Console.ReadLine().Trim());
@@ -140,7 +148,7 @@ public class Dorm
         }
         else if (choice == 3)
         {
-
+                Console.Clear();
                 Console.WriteLine("1-Edit block info");
                 Console.WriteLine("2-room management");
                  choice = int.Parse(Console.ReadLine());
@@ -148,7 +156,12 @@ public class Dorm
                 {
 
                     Console.WriteLine("choose the id of block to update");
-
+                    if (this.blocks.Count == 0)
+                    {
+                        Console.WriteLine("there is no block :(");
+                        Console.ReadKey();
+                        return;
+                    }
                     showBlocks();
 
                     choice = int.Parse(Console.ReadLine());
@@ -171,6 +184,7 @@ public class Dorm
                     if(this.blocks.Count == 0)
                     {
                         Console.WriteLine("there is no block :(");
+                        Console.ReadKey();
                         return;
                     }
                     showBlocks();

@@ -12,8 +12,20 @@
         {
             get { return equipments; }
         }
-        public void Show()
+        public void Show(Block block)
         {
+            Console.WriteLine($"DormId:{block.dormId}");
+            Console.WriteLine($"BlockId:{block.Id}");
+            Console.WriteLine($"Room floor:{floor}");
+            Console.WriteLine($"room id:{id}");
+            Console.WriteLine($"Number of residents:{people.Count}");
+            Console.WriteLine("residents:");
+            foreach(Person p in people)
+            {
+                Console.WriteLine($"{p.name} with student id:{p.stID}");
+
+            }
+            Console.WriteLine("---------------------------------");
 
         }
         public int id, floor, capacity;

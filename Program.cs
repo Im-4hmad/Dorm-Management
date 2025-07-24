@@ -54,6 +54,7 @@ namespace DormManagement
 
                     if (choice == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine("1-Add Dorm");
                         Console.WriteLine("2-Delete Dorm");
                         Console.WriteLine("3-Edit Dorm");
